@@ -14,26 +14,23 @@ print(response.statusCode);
 // Print response body
 Map<String, dynamic> jsonResponse = jsonDecode(response.body);
 
-String firstName = jsonResponse['results'][0]['name']['first'];
-String lastName = jsonResponse['results'][0]['name']['last'];
+
 
 // Create RandomUser object
-RandomUser user = RandomUser(
-  firstName: firstName,
-  lastName: lastName,
-  email: jsonResponse['results'][0]['email'],
-  phone: jsonResponse['results'][0]['phone'],
-);
+RandomUser user = RandomUser.fromJson(jsonResponse);
 return user;
 }
 
 
-
 void main() {
-  makeRequest().then((RandomUser user) {
-    print(user.firstName);
-    print(user.lastName);
-    print(user.email);
-    print(user.phone);
+ Future<RandomUser> user = makeRequest();
+ String firstName;
+  user.then((RandomUser user) {
+    firstName = user.firstName;
+    print(firstName);
+
+    
   });
+  print('End of main');
+
 }
