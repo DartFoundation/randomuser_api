@@ -31,3 +31,20 @@ Uri url = Uri(
 );
 ```
 
+## Synchroneous request
+
+Synchroneous request is a request that blocks the execution of the program until the response is received.
+
+```dart
+http.Response response = await http.get(url);
+```
+
+## Asynchroneous request
+
+Asynchroneous request is a request that does not block the execution of the program while waiting for the response.
+
+```dart
+http.get(url).then((response) {
+    print(response.body);
+});
+```
