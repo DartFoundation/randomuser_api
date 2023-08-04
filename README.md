@@ -36,8 +36,14 @@ Uri url = Uri(
 Synchroneous request is a request that blocks the execution of the program until the response is received.
 
 ```dart
-http.Response response = await http.get(url);
+void main() async {
+    http.Response response = await http.get(url);
+    print(response.body);
+}
+
 ```
+
+Note: The main function is marked with async keyword. The await keyword is used to wait for the response.
 
 ## Asynchroneous request
 
